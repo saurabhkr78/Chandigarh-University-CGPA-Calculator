@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandigarh University CGPA Calculator</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file for styles -->
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcnWP7zkz_hWjidQxPSVBsdDtb4L--fWngJA&s"
+                alt="Chandigarh University Logo" height="80">
+            <h1>Chandigarh University CGPA Calculator</h1>
+        </header>
+
+        <section id="calculator">
+            <h2>Add Subjects</h2>
+            <form onsubmit="addSubject(); return false;">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" required>
+                <label for="credits">Credits:</label>
+                <input type="number" id="credits" required>
+                <button type="submit">Add Subject</button>
+            </form>
+
+            <h2>Subjects List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="subjects-list">
+                    <!-- Subjects will be dynamically added here -->
+                </tbody>
+            </table>
+
+            <button onclick="calculateCGPA()">Calculate CGPA</button>
+            <div id="result"></div>
+        </section>
+
+        <button onclick="printPage()">Print</button> <!-- Print button added -->
+
+        <!-- Credits Section -->
+        <footer>
+            <hr>
+            <p>Developed by Saurabh Choudhary | Version 1.0 | July 2024</p>
+            <a href="https://github.com/saurabhkr78" target="_blank" class="github-button">
+                <i class="fab fa-github"></i> Follow on GitHub
+            </a>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
