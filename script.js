@@ -72,9 +72,40 @@ function calculateCGPA() {
     const resultElement = document.getElementById('result');
     resultElement.innerText = `CGPA: ${cgpa.toFixed(2)}`;
 }
-function printPage() {
-    window.print();
-}
 
+function printPage() {
+    const printContent = `
+        <div style="text-align: center;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcnWP7zkz_hWjidQxPSVBsdDtb4L--fWngJA&s" alt="University Logo" width="100">
+            <h1 style="font-weight: bold;">Chandigarh University</h1>
+        </div>
+        <table border="1" style="width: 100%; margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Credit</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${subjects.map((subj, index) => `
+                    <tr>
+                        <td>${subj.subject}</td>
+                        <td>${subj.credits}</td>
+                        <td>${document.getElementById(`grade-${index}`).options[document.getElementById(`grade-${index}`).selectedIndex].text}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+        <p id="result" style="margin-top: 20px;">${document.getElementById('result').innerText}</p>
+    `;
+
+    const newWindow = window.open('', '', 'width=800,height=600');
+    newWindow.document.write('<html><head><title>Print</title></head><body>');
+    newWindow.document.write(printContent);
+    newWindow.document.write('</body></html>');
+    newWindow.document.close();
+    newWindow.print();
+}
 
 window.onload = loadSubjects;
